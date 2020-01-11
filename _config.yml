@@ -27,6 +27,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  kingnight
 
+#analysis
+baidu-analysis: 8c08768b58ee44026bce43e152f07740
+
 # Build settings
 theme: minima
 plugins:
