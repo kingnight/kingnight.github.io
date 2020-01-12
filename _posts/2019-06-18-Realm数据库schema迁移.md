@@ -1,3 +1,9 @@
+---
+title: "Realm数据库schema迁移"
+description: "Realm数据库schema迁移"
+category: programming
+tags: swift, ios, realm
+---
 # 1.Realm支持的自动迁移特性
 
 - schema 版本号变更
