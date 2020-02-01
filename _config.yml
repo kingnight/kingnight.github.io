@@ -30,6 +30,9 @@ github_username:  kingnight
 #analysis
 baidu-analysis: 8c08768b58ee44026bce43e152f07740
 
+disqus:
+    shortname: kingnight-github-io-1
+
 # Build settings
 theme: minima
 plugins:
