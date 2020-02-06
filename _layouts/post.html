@@ -19,9 +19,12 @@ layout: default
     {{ content }}
   </div>
 
+  <h3 style="color: crimson;">评论系统使用Disqus，如要需要查看评论或者发表评论，需要翻墙~~~~</h3>
+
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}
+  
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
