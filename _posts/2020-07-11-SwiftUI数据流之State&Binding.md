@@ -450,9 +450,3 @@ _user:State<User>
 * 添加了property wrapper的属性，变量本身并没有变化，而是修改了由SwiftUI维护的当前struct之外的变量
 
 
-参考：
-* https://forums.swift.org/t/why-i-can-mutate-state-var-how-does-state-property-wrapper-work-inside/27209
-* https://medium.com/@kateinoigakukun/inside-swiftui-how-state-implemented-92a51c0cb5f6
-* https://kateinoigakukun.hatenablog.com/entry/2019/03/22/184356
-
-
