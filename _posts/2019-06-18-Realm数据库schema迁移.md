@@ -4,6 +4,8 @@ description: "Realm数据库schema迁移"
 category: programming
 tags: swift, ios, realm
 ---
+本篇介绍使用Realm过程中最重要的一个环节——数据迁移
+
 # 1.Realm支持的自动迁移特性
 
 - schema 版本号变更

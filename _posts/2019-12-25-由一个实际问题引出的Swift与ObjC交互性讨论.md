@@ -5,6 +5,8 @@ category: programming
 tags: swift, ios, compiler
 ---
 
+> 本篇文章由一个项目中的实际问题引出，TableView是常用的基础控件，我们经常在一个基类中实现Tableview的基础代理方法，然后再根据业务需求情况，设计不同的子类继承基类，重写部分代理方法，简化业务实现。我们要探讨的问题就在继承中出现。。。。
+
 # 问题引出
 
 先来看这段代码，是常见的tableView相关的使用场景
