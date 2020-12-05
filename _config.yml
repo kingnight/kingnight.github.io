@@ -23,7 +23,7 @@ email: kai.jin.job@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Mobile Developer focus on iOS, interested in Swift,SwiftUI,Objective-C, write notes personally in here 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://kingnight.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
 github_username:  kingnight
 
@@ -47,6 +47,10 @@ defaults:
       links:
         - https://github.com/kingnight
         
+
+disqus:
+    shortname: kingnight-github-io
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
