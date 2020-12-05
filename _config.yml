@@ -31,8 +31,10 @@ github_username:  kingnight
 baidu-analysis: 8c08768b58ee44026bce43e152f07740
 
 # Build settings
-theme: jekyll-theme-leap-day
-#theme: jekyll-theme-leap-day
+theme: minima
+minima:
+  skin: dark
+  
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
