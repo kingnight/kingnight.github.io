@@ -34,7 +34,9 @@ baidu-analysis: 8c08768b58ee44026bce43e152f07740
 theme: minima
 minima:
   skin: dark
-  
+
+show_excerpts: true
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
