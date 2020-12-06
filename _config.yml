@@ -38,6 +38,7 @@ minima:
 show_excerpts: true
 
 paginate: 5
+paginate_path: pagination/page:num/
 
 plugins:
   - jekyll-feed
