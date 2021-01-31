@@ -1,3 +1,9 @@
+---
+title: "@Published Property Wrapper"
+description: "本文记录一些@Published的细节和使用"
+category: programming
+tags: iOS,property wrapper
+---
 
 @Published 适合于ObserabledObject配合使用，在存储属性上添加@Published，将会使得有值变化时，自动发出publisher
 

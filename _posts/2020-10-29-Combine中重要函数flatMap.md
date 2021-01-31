@@ -1,10 +1,9 @@
-> 内容：
->
-> flatMap   
->
-> Result类型中的flatMap
->
-> Publisher中flatMap
+---
+title: "Combine中重要函数flatMap"
+description: "flatMap是Combine中很重要的一个操作符，本文将介绍flatMap的作用，Result类型中的flatMap如何使用，Publisher中flatMap有什么使用的注意问题。"
+category: programming
+tags: iOS,Combine,flatmap
+---
 
 flatMap
 =======

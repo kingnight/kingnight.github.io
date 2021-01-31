@@ -1,3 +1,14 @@
+---
+title: "Combine中Schdulers深度探索"
+description: "本文主要探讨如何利用Combine中Schedulers对任务执行进行管理。将会介绍以下几方面内容：
+- 什么是Schedulers？
+- Combine的默认调度机制
+- 切换Schedulers的操作符
+- 通过实例深入理解Schedulers的调度
+- Combine中Schedulers的类型和使用"
+category: programming
+tags: iOS,Combine,Schedulers
+---
 
 本文主要探讨如何利用Combine中Schedulers对任务执行进行管理。假定读者已经了解Combine的基本原理，想要进一步对Combine中任务调度进行详细了解。由于Schedulers与GCD（Grand Dispatch Queue），线程（thread），RunLoop都有关联，所以也需要读者有这方面的基础了解才能更好的读懂下文。
 
