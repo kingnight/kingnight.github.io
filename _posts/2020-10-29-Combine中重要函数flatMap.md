@@ -5,6 +5,8 @@ category: programming
 tags: iOS,Combine,flatmap
 ---
 
+flatMap是Combine中很重要的一个操作符，本文将介绍flatMap的作用，Result类型中的flatMap如何使用，Publisher中flatMap有什么使用的注意问题。
+
 flatMap
 =======
 
