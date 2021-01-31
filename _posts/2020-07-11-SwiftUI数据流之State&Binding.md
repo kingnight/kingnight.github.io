@@ -57,19 +57,20 @@ struct User {
 # Binding
 > A property wrapper type that can read and write a value owned by a source of truth.
 
-Binding的作用是在保存状态的属性和更改数据的视图之间创建双向连接，将当前属性连接到存储在别处的单一数据源（single source of truth），而不是直接存储数据。将存储在别处的值语意的属性转换为引用语义，在使用时需要在变量名加$符号。
+Binding的作用是在保存状态的属性和更改数据的视图之间创建双向连接，将当前属性连接到存储在别处的单一数据源（single source of truth），而不是直接存储数据。**将存储在别处的值语意的属性转换为引用语义，在使用时需要在变量名加$符号。**
 
 通常使用场景是把当前View中的@State值类型传递给其子View，如果直接传递State值类型，将会把值类型复制一份copy，那么如果子View中对值类型的某个属性进行修改，父View不会得到变化，所以需要把State转成Binding传递。
 
 @Binding 修饰属性无需有初始化值，Binding可以配合@State或ObservableObject对象中的值属性一起使用，注意不是@ObservedObject属性包装器
 
 ```swift
+//Model
 struct Product:Identifiable {
     var isFavorited:Bool
     var title:String
     var id: String
 }
-
+//SubView
 struct FilterView: View {
     @Binding var showFavorited: Bool  //3
 
@@ -79,7 +80,7 @@ struct FilterView: View {
         }
     }
 }
-
+//ParentView
 struct ProductsView: View {
     let products: [Product] = [
     Product(isFavorited: true, title: "ggggg",id: "1"),
@@ -111,10 +112,10 @@ struct ProductsView: View {
 观察下面示例
 ```swift
 struct StateMutableView: View {
-    @State private var flag = false
-    private var anotherFlag = false
+    @State private var flag = false  //flag是标记为State的变量
+    private var anotherFlag = false  //anotherFlag是没有使用属性包装器的普通变量
 
-    mutating func changeAnotherFlag(_ value: Bool) {
+    mutating func changeAnotherFlag(_ value: Bool) {  //mutating的方法修改anotherFlag
         self.anotherFlag = value
     }
     
@@ -146,25 +147,27 @@ flag是标记为State的变量，anotherFlag是没有使用属性包装器的普
 
 ## 为什么不可以修改anotherFlag
 
-### 计算属性getter
+### 计算属性getter方法
 
 示例5
 ```swift
 struct SimpleStruct {
+    //计算属性anotherFlag
     var anotherFlag: Bool {
         _anotherFlag = true
 //      ^~~~~~~~~~~~
 //      error: cannot assign to property: 'self' is immutable
         return _anotherFlag
     }
-
+    //存储属性_anotherFlag
     private var _anotherFlag = false
 }
 ```
-_anotherFlag存储属性，anotherFlag计算属性
-在getter属性中，self默认是nonmutating，是不能被修改的，所以报错
+注意对比两个属性：_anotherFlag是存储属性，anotherFlag是计算属性；
+**计算属性的getter方法，默认是nonmutating，是不能被修改的，所以报错**
 
-但是，可以有例外，如果getter被特殊标记为mutating，就可以被修改
+**但是，可以有例外，如果getter被特殊标记为mutating，就可以被修改**
+修改如下：
 ```swift
 struct SimpleStruct {
     var anotherFlag: Bool {
@@ -187,7 +190,7 @@ _ = s1.anotherFlag
 //  ^~ error: cannot use mutating getter on immutable value: 's1' is a 'let' constant
 ```
 
-既然可以通过添加mutating，使得计算属性get中可以修改self，那么SwiftUI中前面示例的body属性可否添加呢？
+**既然可以通过添加mutating，使得计算属性get中可以修改self，那么SwiftUI中前面示例的body属性可否添加呢？**
 
 查看View协议的定义
 ```swift
@@ -203,7 +206,7 @@ public protocol View {
     var body: Self.Body { get }
 }
 ```
-body是set，不能被改为mutating，所以如果你改为这样下面
+body修饰符是get，不能被改为mutating get，所以如果你改为这样下面
 ```swift
 struct SimpleView: View {
 //     ^ error: type 'SimpleView' does not conform to protocol 'View' 
@@ -214,7 +217,7 @@ struct SimpleView: View {
 ```
 会报错，提示没有遵守View协议
 
-小结：不可以修改anotherFlag的原因：body计算属性的的getter不可以被修改为mutating
+**小结：不可以修改anotherFlag，即不可以修改SwiftUI中Struct内的普通变量，其内在的原因是：body计算属性的getter方法不可以被修改为mutating**
 
 ## 为什么可以修改flag
 
@@ -243,7 +246,7 @@ nonmutating有什么含义？
 
 ### 计算属性setter
 
-在setter属性中，self默认是mutating，可以被修改；我们不能给一个不可变的量赋值，可以通过声明setter nonmutating使属性可赋值，这个nonmutating关键字向编译器表明，这个赋值过程不会修改这个struct本身，而是修改其他变量。
+在setter属性中，self默认是mutating，可以被修改；我们不能给一个不可变的量赋值，可以通过声明setter nonmutating使属性可赋值，**这个nonmutating关键字向编译器表明，这个赋值过程不会修改这个struct本身，而是修改其他变量。**
 
 ```swift
 struct SimpleStruct {
@@ -270,7 +273,7 @@ _ = s1.anotherFlag // 同时影响s0和s1，他们内部的_anotherFlag都发生
 ```
 这个例子当中_anotherFlag修改了UserDefaults的值，会同时对s0和s1都产生影响，相当于起到了引用类型的作用，在实际编程中这当然是一个不好的范例，容易产生问题
 
-小结：可以修改flag的原因，添加了property wrapper的属性，变量本身并没有变化，而是修改了由SwiftUI维护的当前struct之外的变量
+**小结：可以修改flag的原因，添加了property wrapper的属性，变量本身并没有变化，而是修改了由SwiftUI维护的当前struct之外的变量**
 
 # State内部实现
 为了进一步深入分析，我们继续展示一个相对完整的例子
@@ -290,6 +293,7 @@ _ = s1.anotherFlag // 同时影响s0和s1，他们内部的_anotherFlag都发生
 打开断点，从头开始执行代码，首先执行到16行断点处，User初始化，此时self是User结构体本身
 
 ```swift
+po self
 ▿ User
  \- name : ""
  \- count : 0
@@ -298,6 +302,7 @@ _ = s1.anotherFlag // 同时影响s0和s1，他们内部的_anotherFlag都发生
 继续执行到ContentView的初始化方法最后一行，此时self是ContentView，打印一下
 
 ```swift
+po self
 ▿ ContentView
  ▿ _user : State<User>
   ▿ _value : User
@@ -307,7 +312,8 @@ _ = s1.anotherFlag // 同时影响s0和s1，他们内部的_anotherFlag都发生
 ```
 出现了一个新的`_user`变量，类型是`State<User>`，这个变量内部属性`_value`类型是`User`;这意味着，加了@State属性包装器的user实例变量，由本身的`User`类型转变为一个新的`State<User>`类型，这个转变完成的新类型实例`_user`由SwiftUI负责生成和管理，它的内部包裹着真实的User实例，另外`_location`也值得注意，它目前是nil;
 
-如果你注意到35行代码`user = User(name: "TT", count: 100)`发现它并不会改变内部`_user`，如果想要修改，只能采用下面方式，通过State提供的第二个初始化方法
+如果你注意到35行代码`user = User(name: "TT", count: 100)`发现它并不会改变内部`_user`;
+如果想要修改，只能采用下面方式，通过State提供的第二个初始化方法
 ```swift
 _user = State(wrappedValue: User(name: "TT", count: 100))
 ```
@@ -323,10 +329,11 @@ ContentView init
     - count: 0
   - _location: nil
 ```
-按照预期的执行顺序，User init执行，ContentView init执行，然后打印出了当前结构体的地址和`_user`内部结构
+按照预期的执行顺序，User init执行，ContentView init执行，然后打印出了当前结构体的地址和`_user`内部结构;
 
 下一步，由于body执行完毕，页面渲染完整，现在点击Count+1按钮，断点停在47行，再观察内部变量情况
 ```swift
+po self
 ▿ ContentView
   ▿ _user : State<User>
     ▿ _value : User
@@ -335,8 +342,9 @@ ContentView init
     ▿ _location : Optional<AnyLocation<User>>
       ▿ some : <StoredLocation<User>: 0x600003c26a80>
 ```
-`_location`不再是nil
+_user没有变化，但是`_location`不再是nil
 
+继续执行，运行完成`print(address(o: &user))` 和 `dump(_user)`两个函数，输出结果如下：
 ```swift
 140732783330824
 ▿ SwiftUI.State<DemoState.User>
@@ -346,7 +354,7 @@ ContentView init
   ▿ _location: Optional(SwiftUI.StoredLocation<DemoState.User>)
     ▿ some: SwiftUI.StoredLocation<DemoState.User> #0
 ```
-user的地址也发生了变化，开始时创建的user被销毁又重新创建了，这是因为@State 修饰的属性的它的所有相关操作和状态改变都应该是和当前视图生命周期保持一致，当视图没有被初始化完成时，无法完成状态属性和视图之间的绑定关系；当视图完成初始化和建立与State修饰状态的绑定关系后，`_location`就不再是nil，其中保存了众多标记视图关系和位置的信息，这里没有全部展示出来；
+仔细对比一下，user的地址发生了变化，开始时创建的user被销毁又重新创建了，这是因为@State 修饰的属性的它的所有相关操作和状态改变都应该是和当前视图生命周期保持一致，当视图没有被初始化完成时，无法完成状态属性和视图之间的绑定关系；当视图完成初始化和建立与State修饰状态的绑定关系后，`_location`就不再是nil，其中保存了众多标记视图关系和位置的信息，这里没有全部展示出来；
 
 再点击一次Count+1按钮，count值变为2，user的地址将持续保持不变，生命周期与视图保持一致。
 
@@ -408,7 +416,7 @@ error: <EXPR>:3:14: error: cannot assign value of type 'String' to type 'Binding
 $user.name = "Tim"
              ^~~~~ 
 ```
-说明projectedValue只读属性
+说明projectedValue只读属性，这跟State的定义中projectedValue的定义`public var projectedValue: Binding<Value> { get }`是一致的
 
 通过上面分析可以画出一张State内部实现属性的关系
 
@@ -450,3 +458,7 @@ _user:State<User>
 * 添加了property wrapper的属性，变量本身并没有变化，而是修改了由SwiftUI维护的当前struct之外的变量
 
 
+参考：
+* https://forums.swift.org/t/why-i-can-mutate-state-var-how-does-state-property-wrapper-work-inside/27209
+* https://medium.com/@kateinoigakukun/inside-swiftui-how-state-implemented-92a51c0cb5f6
+* https://kateinoigakukun.hatenablog.com/entry/2019/03/22/184356
