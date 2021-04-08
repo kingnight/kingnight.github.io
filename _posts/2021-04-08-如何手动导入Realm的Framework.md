@@ -21,9 +21,13 @@ tags: iOS,Swift,Realm
 # 导入
 
 在你的项目中的
+
 ![2cf328cda9de2e81194aa6e7e642f5f4](/assets/images/截屏2021-04-08 下午3.31.30.png)
+
 导入
+
 ![9f67fcdedf27e765cede32f5feb54f02](/assets/images/截屏2021-04-08 下午3.31.14.png)
+
 **需要特别注意，右侧的配置选择“Embed & Sign”，否则启动运行时，会提示找不到动态库**
 
 对于一个xxx.framework，它本身是一个文件夹，内部包含一个可执行文件，我们可以通过file命令来查看是动态库还是静态库；
