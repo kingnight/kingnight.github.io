@@ -5,11 +5,6 @@ category: programming
 tags: iOS,Swift,Extension
 ---
 
-# 目录
-
-[TOC]
-
-# 问题
 
 从Xcode12.5开始，苹果要求所有的Extension Target必须设置APPLICATION_EXTENSION_API_ONLY为true，否则将会导致编译错误“Application extensions and any libraries they link to must be built with the `APPLICATION_EXTENSION_API_ONLY` build setting set to YES”；但是我们通常会在主工程和Extension之间使用Framework或其他方式共享代码，这些代码中使用了非extension-only API，所以导致问题出现，本篇文章将探讨如何解决这个问题。
 
