@@ -1,6 +1,6 @@
 ---
 title: "Using Swift API availability to solve App Extension Compiled Error"
-description: "Starting from Xcode12.5, Apple requires that all Extension Targets must set APPLICATION_EXTENSION_API_ONLY to true, otherwise it will cause a compilation error "Application extensions and any libraries they link to must be built with the `APPLICATION_EXTENSION_API_ONLY` build setting set to YES"; but we Framework or other methods are usually used to share code between the main project and the extension. These codes use non-extension-only APIs, which leads to problems. This article will discuss how to solve this problem."
+description: "Starting from Xcode12.5, Apple requires that all Extension Targets must set APPLICATION_EXTENSION_API_ONLY to true, otherwise it will cause a compilation error Application extensions and any libraries they link to must be built with the APPLICATION_EXTENSION_API_ONLY  build setting set to YES; but we Framework or other methods are usually used to share code between the main project and the extension. These codes use non-extension-only APIs, which leads to problems. This article will discuss how to solve this problem."
 category: programming
 tags: iOS,Swift,Extension,APPLICATION_EXTENSION_API_ONLY
 ---
