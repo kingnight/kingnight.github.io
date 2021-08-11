@@ -8,5 +8,9 @@ permalink: /about/
 
 Hi, I'm Kingnight. Thank you for visiting my blog!
 
- I am a Mobile Developer focus on iOS, interested in Swift,SwiftUI,Objective-C, write notes personally in here .
+I am a Technical manager and  a Mobile Developer focus on iOS, interested in Swift,SwiftUI,Objective-C, write articles about Technology and management  in here. Feel free to leave a comment！
 
+# 关于我
+你好，我是Kingnight，欢迎光临我的blog！
+
+我是一名技术管理者，也是一名专注于iOS的移动开发工程师，对Swift，SwiftUI，Objective-C都很感兴趣，在这里写些关于技术和管理的文章，欢迎在评论区交流。
