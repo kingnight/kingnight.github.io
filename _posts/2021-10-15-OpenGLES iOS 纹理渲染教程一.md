@@ -5,9 +5,7 @@ category: programming
 tags: iOS,Swift,OpenGLES,Texture
 ---
 
-# 目录
-
-[toc]
+OpenGLES是 OpenGL 的子集，针对手机、PDA 和游戏主机等嵌入式设备而设计。本系列文章以iOS平台进行纹理渲染为实践目标，在查找了大量资料后进行整理而得，本篇是系列的第一篇。
 
 # 0.前言
 OpenGL（Open Graphics Library）是 Khronos Group （一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准）开发维护的一个规范，它是硬件无关的。它主要为我们定义了用来操作图形和图片的一系列函数的 API，OpenGL 本身并非 API。
