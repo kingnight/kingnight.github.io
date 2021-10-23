@@ -16,7 +16,6 @@ OpenGL ES 去除了四边形（GL_QUADS）、多边形（GL_POLYGONS）等复杂
 
 目前 iOS 平台支持的有 OpenGL ES 1.0，2.0，3.0。OpenGL ES 3.0 加入了一些新的特性，但是它除了需要 iOS 7.0 以上之外，还需要 iPhone 5S 之后的设备才能支持。
 
->注：下文中的 OpenGL ES 均指代 OpenGL ES 2.0。
 
 
 # 1.基本概念
@@ -35,14 +34,12 @@ OpenGL ES 是一个**状态机**，相关的配置信息会被保存在一个上
 ## 缓存(Buffer)
 OpenGL ES 部分运行在 CPU 上，部分运行在 GPU 上，CPU 和 GPU 都有独自控制的内存区域，为了协调这两部分的数据交换，定义了缓存（Buffers）的概念。缓存实际上就是指一块连续的 RAM 。
 
-FBO = Frame Buffer object
 ## OpenGL ES 中的图元(Primitive)
 图元（Primitive）是指 OpenGL ES 中支持渲染的基本图形。OpenGL ES 只支持三种图元，分别是顶点、线段、三角形。复杂的图形得通过渲染多个三角形来实现。
 
 ## 顶点(Vertex)
 顶点数据也称作顶点属性，指定每个顶点的数据。这种逐顶点数据可以为每个顶点指定，也可以用于所有顶点的常量。例娅，如果你想要绘制固定颜色的三角形（在这个例子中，假定颜色为黑色)，可以指定一个常量值，用于三角形的全部了个顶点。但是，组成三角形的3个项点的位置不同，所以我们必须指定一个顶点数组来存储三个位置值。
 
-VBO = Vertex Buffer Object
 ## 纹理(Texture)
 纹理是一个用来保存图像颜色的元素值的缓存，渲染是指将数据生成图像的过程。纹理渲染则是将保存在内存中的颜色值等数据，生成图像的过程。
 
@@ -60,7 +57,7 @@ OpenGL ES 坐标系的范围是 -1 ~ 1，是一个三维的坐标系，通常用
 
 纹理坐标系的范围是 0 ~ 1，是一个二维坐标系，横轴称为 S 轴，纵轴称为 T 轴。在坐标系中，点的横坐标一般用 U 表示，点的纵坐标一般用 V 表示。左下角为 (0, 0)，右上角为 (1, 1)。
 
-注： UIKit 坐标系的 (0, 0) 点在左上角，其纵轴的方向和纹理坐标系纵轴的方向刚好相反。
+>注： UIKit 坐标系的 (0, 0) 点在左上角，其纵轴的方向和纹理坐标系纵轴的方向刚好相反。
 
 ## 着色器(Shaders)
 顶点着色器和片段着色器是可编程的部分，着色器（Shader）是一个小程序，它们运行在 GPU 上，在主程序运行的时候进行动态编译，而不用写死在代码里面。编写着色器用的语言是 GLSL（OpenGL Shading Language）
@@ -80,7 +77,7 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 
 以渲染三角形为例
 
-1、顶点数据
+## 1、顶点数据
 
 为了渲染一个三角形，我们需要传入一个包含 3 个三维顶点坐标的数组，每个顶点都有对应的顶点属性，顶点属性中可以包含任何我们想用的数据。在上图的例子里，我们的每个顶点包含了一个颜色值。
 
@@ -89,7 +86,7 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 ![c62a184fc456afcd8aa591a26a4010e2](/assets/images/截屏2021-09-16 17.42.37.png)
 
 
-2、顶点着色器
+## 2、顶点着色器
 
 顶点着色器会对每个顶点执行一次运算，它可以使用顶点数据来计算该顶点的坐标、颜色、光照、纹理坐标等。
 
@@ -98,7 +95,7 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 ![e2750d4204fc81a2d621444fefb126fa](/assets/images/step2.png)
 
 
-3、图元装配
+## 3、图元装配
 
 在顶点着色器程序输出顶点坐标之后，各个顶点按照绘制命令中的图元类型参数，以及顶点索引数组被组装成一个个图元。
 
@@ -112,7 +109,7 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 ~~在「OpenGL」的版本中，顶点着色器和片段着色器之间有一个可选的着色器，叫做几何着色器（Geometry Shader）。几何着色器把图元形式的一系列顶点的集合作为输入，它可以通过产生新顶点构造出新的图元来生成其他形状。OpenGL ES 目前还不支持几何着色器，这个部分我们可以先不关注。~~
 
 
-5、光栅化
+## 5、光栅化
 
 在光栅化阶段，基本图元被转换为供片段着色器使用的片段。**片段表示可以被渲染到屏幕上的像素**，它包含位置、颜色、纹理坐标等信息，这些值是由图元的顶点信息进行插值计算得到的。
 
@@ -121,19 +118,37 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 ![896f06702b4f27deba8b92eb9b7f6b5e](/assets/images/step4.png)
 
 
-6、片段着色器
+## 6、片段着色器
 
 **片段着色器的主要作用是计算每一个片段最终的颜色值（或者丢弃该片段）。片段着色器决定了最终屏幕上每一个像素点的颜色值。**
 
 ![abdac3f030975e7081169dd159e000e0](/assets/images/step5.png)
 
-7、测试与混合
+## 7、测试与混合
 
 在这一步，OpenGL ES 会根据片段是否被遮挡、视图上是否已存在绘制好的片段等情况，对片段进行丢弃或着混合，最终被保留下来的片段会被写入**帧缓存**中，最终呈现在设备屏幕上。
 
 ![c84625fb5cf0fbcfaaa7424a9104dc9c](/assets/images/step6.png)
 
+# EGL（EAGL）
 
+EGL 是 OpenGL ES 的上屏框架，而 Apple 使用了自己实现的 EAGL，基于 Core Animation 框架来控制显示。
+EGL 允许我们选择 屏上渲染 和 离屏渲染，前者是直接将结果渲染到屏幕上，而后者是通过将内容渲染到 buffer 中，然后再展示。
+对于离屏渲染，有些实现是通过 SwapBuffer 来实现，简单来说就是一个 buffer 用来显示，另一个用来后台渲染，渲染完成后交换两个 buffer。而 iOS 中的实现则是通过 context 的 presentRenderBuffer: api 结合系统内部实现的。
+## 内容展示 CAEAGLayer
+继承自 CALayer，用以展示 renderBuffer。通过调用 EAGLContext 的 `- (BOOL)renderbufferStorage:(NSUInteger)target fromDrawable:(nullable id<EAGLDrawable>)drawable; `函数，可以将 buffer 与 layer 绑定到一起：
+## 注意
+* CALayer 的 Opaque 默认是 false，即透明的，需要设置为 true 才能展示内容
+* drawableProperties 是其子类唯一的属性，保存这个 layer 的配置 dict，有如下两个 key：
+    * kEAGLDrawablePropertyRetainedBacking：控制调用 presentRenderbuffer 后是否对 layer 的 content 进行 retain
+    * kEAGLDrawablePropertyColorFormat：颜色的样式，一般用 kEAGLColorFormatRGBA8 值
+## 使用
+如果想让自定义的 UIView 的 layer 使用 CAEAGLayer，重写其 + (Class)layerClass 方法即可：
+```objc
++ (Class)layerClass {
+    return [CAEAGLLayer class];
+}
+```
 # 缓存
 
 ## CPU到GPU缓存数据交换
@@ -141,7 +156,7 @@ GLKit是iOS基于openGL实现的一个框架，目的在于简化OpenGL的操作
 
 在实际应用中，我们需要使用各种各样的缓存。比如在纹理渲染之前，需要生成一块保存了图像数据的纹理缓存。下面介绍一下缓存管理的一般步骤：
 
-使用缓存的过程可以分为 7 步：
+**使用缓存的过程可以分为 7 步：**
 
 1. 生成（Generate）：生成缓存标识符 glGenBuffers()
 2. 绑定（Bind）：对接下来的操作，绑定一个缓存 glBindBuffer()
@@ -160,8 +175,9 @@ GPU 需要知道应该在内存中的哪个位置存储渲染出来的2D图像�
 
 # 上下文(Context)
 
-用于配置 OpenGL ES 的保存在特定平台的软件数据结构中的信息会被封装到一个OpenGL ES 上下文 （context） 中。**OpenGL ES 是一个状态机器，这意味着在一个程序中设置了一个配置值后，这个值会一直保持，直到程序修改了这个值。** 上下文中的信息可能会被保存在CPU 所控制的内存中，也可能会被保存在GPU 所控制的内存中。OpenGL ES 会按需在两个内存区城之间复制信息。
+用于配置 OpenGL ES 的保存在特定平台的软件数据结构中的信息会被封装到一个OpenGL ES 上下文 （context） 中。**OpenGL ES 是一个状态机器，这意味着在一个程序中设置了一个配置值后，这个值会一直保持，直到程序修改了这个值。** 上下文中的信息可能会被保存在`CPU`所控制的内存中，也可能会被保存在`GPU`所控制的内存中。OpenGL ES会按需在两个内存区城之间复制信息。
 
+对于 iOS 平台而言，我们通过 EAGLContext 来管理我们的渲染上下文。
 
 ```swift
 private(set) var context: EAGLContext?
@@ -174,6 +190,24 @@ if !result {
 }
 ```
 
+**并且在每一个线程当中，都会维护一个上下文**
+```objc
+_ctx = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES3];
+[EAGLContext setCurrentContext: _ctx];
+NSLog(@"CTX0： %@ - %@", [NSThread currentThread], [EAGLContext currentContext]);
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+  NSLog(@"CTX1：%@ - %@", [NSThread currentThread], [EAGLContext currentContext]);
+});
+```
+输出
+```objc
+2020-05-07 01:24:18.684586+0800 OpenGLTest[3043:179547] CTX0： <NSThread: 0x600001db4100>{number = 1, name = main} - <EAGLContext: 0x6000008b8220>
+2020-05-07 01:24:18.684762+0800 OpenGLTest[3043:179720] CTX1：<NSThread: 0x600001d2c640>{number = 6, name = (null)} - (null)
+```
+相关api：
+- (nullable instancetype) initWithAPI:(EAGLRenderingAPI) api; 创建上下文，有可能会创建失败。比如某些系统不支持 kEAGLRenderingAPIOpenGLES3 就会返回 nil
++ (BOOL) setCurrentContext:(nullable EAGLContext*) context; 设置当前线程的上下文
++ (nullable EAGLContext*) currentContext; 获取当前线程的上下文，未设置的时候会返回 nil
 **OpenGL ES 上下文会跟踪用于渲染的帧缓存**。上下文还会跟踪用于几何数据颜色等的缓存。上下文会决定是否使用某些功能，比如纹理和灯光.
 
 
@@ -193,25 +227,22 @@ Core Animation 包含层的概念。同一时刻可以有任意数量的层。Co
 
 
 
-# 绘制到其他渲染目的地
-以下部分为官方文档翻译节选，[原文链接](https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/WorkingwithEAGLContexts/WorkingwithEAGLContexts.html#//apple_ref/doc/uid/TP40008793-CH103-SW6)。
+# 缓冲区与绘制
 
-Framebuffer对象是渲染命令的目标。当您创建一个framebuffer对象时，**您可以精确控制其存储的颜色，深度和模板数据。** 您可以通过将图像附加到帧缓冲区来提供此存储，如图4-1所示。最常见的图像附件是一个renderbuffer对象。您还可以将OpenGL ES纹理附加到帧缓冲区的颜色附加点，这意味着任何绘图命令都将呈现到纹理中。之后，纹理可以作为未来渲染命令的输入。您还可以在单个渲染上下文中创建多个帧缓冲区对象。您可以这样做，以便您可以在多个帧缓冲区之间共享相同的渲染管道和OpenGL ES资源。
+## RBO & FBO 离屏渲染
+
+### RBO 渲染缓存区 （Render Buffer Object）
+用以将储存渲染的内容，有可能是 **颜色（color）、深度（depth）、模板（stencil）**。
+### FBO 帧缓冲区 （Frame Buffer Object）
+FBO 只是充当管理角色，负责管理 RBO。FBO 不含储存区，可以将含有储存区的 RBO 附着（attach）到 FBO 上做管理。
+Framebuffer对象是渲染的目标。当创建一个framebuffer对象时，**您可以精确控制其存储的颜色，深度和模板数据。您可以通过将图像附加到帧缓冲区来提供此存储，如图所示。最常见的图像附件是一个renderbuffer对象。您还可以将OpenGL ES纹理附加到帧缓冲区的颜色附加点，这意味着任何绘图命令都将呈现到纹理中。** 之后，纹理可以作为未来渲染命令的输入。您还可以在单个渲染上下文中创建多个帧缓冲区对象。您可以这样做，以便您可以在多个帧缓冲区之间共享相同的渲染管道和OpenGL ES资源。
 
 ![35df7960bbda6726f241dca53f9f8237](/assets/images/E79DB89A-2ED1-48FE-976C-B57E8745EDB0.png)
 
 所有这些方法都需要手动创建framebuffer和renderbuffer对象来存储来自OpenGL ES上下文的渲染结果，以及编写附加代码以将其内容显示在屏幕上，如果需要，运行动画循环
 
 
-## 创建一个 Framebuffer Object
-
-根据您的应用程序要执行的任务，您的应用程序会配置不同的对象以附加到framebuffer对象。在大多数情况下，配置帧缓冲区的区别在于什么对象附加到framebuffer对象的颜色附着点
-
-* 要使用帧缓冲区进行屏幕外图像处理，请附加一个renderbuffer。请参阅创建Offscreen Framebuffer对象。
-* 要使用帧缓冲图像作为后续渲染步骤的输入，请附加纹理。请参阅使用Framebuffer对象渲染到纹理。
-* 要在Core Animation图层组合中使用framebuffer，请使用特殊的Core Animation感知renderbuffer。请参阅渲染到核心动画层。
-
-## 创建 Offscreen Framebuffer Objects
+## 创建离屏渲染帧缓存（Offscreen Framebuffer）对象FBO和RBO
 用于屏幕外渲染的帧缓冲区将其所有附件分配为OpenGL ES渲染缓冲区。以下代码分配带有颜色和深度附件的framebuffer对象。
 
 1. 创建帧缓冲区并绑定它。
@@ -281,14 +312,12 @@ CAEAGLLayer通过提供两个关键功能向OpenGL ES提供此支持。首先，
 
 
 > **注意：GLKView类会自动执行以下步骤，因此当您需要将OpenGL ES的内容绘制到包含layer的视图上时，您应该使用GLKView。**
->
-> **注解：当需要将OpenGL ES的内容绘制到iOS的UIView上时，需要使用GLKView类或CAEAGLLayer类来实现将OpenGL ES的内容绘制到iOS的UIView上。**
 
 
 ## 为OpenGL ES渲染使用Core Animation层
 
 1. 创建CAEAGLLayer对象并配置其属性。
-为获得最佳性能，请将图层的不透明属性的值设置为YES。看到注意核心动画合成性能。可选地，通过为CAEAGLLayer对象的drawableProperties属性分配一个新的值字典来配置渲染表面的表面属性。您可以指定renderbuffer的像素格式，并指定在将它们发送到Core Animation之后，renderbuffer的内容是否被丢弃。有关允许密钥的列表，请参阅EAGLDrawable Protocol Reference。
+为获得最佳性能，请将图层的不透明属性的值设置为YES。看到注意核心动画合成性能。可选地，通过为CAEAGLLayer对象的drawableProperties属性分配一个新的值字典来配置渲染表面的表面属性。您可以指定renderbuffer的像素格式，并指定在将它们发送到Core Animation之后，renderbuffer的内容是否被丢弃。
 
 2. 分配OpenGL ES上下文并使其成为当前上下文。请参阅配置OpenGL ES上下文。
 3. 创建framebuffer对象（如上面的创建Offscreen Framebuffer对象）。
@@ -311,7 +340,7 @@ GLint height;
 glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &width);
 glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
 ```
-在前面的例子中，renderbuffers的宽度和高度被明确地提供给缓冲区的分配存储。这里，代码在分配存储后从颜色renderbuffer中检索宽度和高度。您的应用程序执行此操作是因为颜色renderbuffer的实际尺寸是根据图层的边界和比例因子计算的。附加到帧缓冲区的其他渲染缓冲区必须具有相同的尺寸。除了使用高度和宽度来分配深度缓冲区之外，还可以使用它们来分配OpenGL ES视口，并帮助确定应用程序纹理和模型所需的详细程度。请参阅支持高分辨率显示器。
+在前面的例子中，renderbuffers的宽度和高度被明确地提供给缓冲区的分配存储。这里，代码在分配存储后从颜色renderbuffer中检索宽度和高度。您的应用程序执行此操作是因为颜色renderbuffer的实际尺寸是根据图层的边界和比例因子计算的。**附加到帧缓冲区的其他渲染缓冲区必须具有相同的尺寸。除了使用高度和宽度来分配深度缓冲区之外，还可以使用它们来分配OpenGL ES视口，并帮助确定应用程序纹理和模型所需的详细程度。** 
 
 6. 分配并附加深度缓冲区（如前所述）。
 7. 测试framebuffer的完整性（如前所述）。
@@ -321,10 +350,11 @@ glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
 # 参考
 
 * http://www.lymanli.com/2019/02/17/ios-opengles-render-texture/
-* [官方文档](https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/WorkingwithEAGLContexts/WorkingwithEAGLContexts.html#//apple_ref/doc/uid/TP40008793-CH103-SW6)
+* [Apple官方文档-OpenGLES编程指南-WorkingwithEAGLContexts](https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/WorkingwithEAGLContexts/WorkingwithEAGLContexts.html#//apple_ref/doc/uid/TP40008793-CH103-SW6)
 * OpenGL ES应用开发实践 指南 iOS卷
 * OPENGL ES 3.0编程指南
 * [Beginning OpenGL for iOS [youtube video Series]](https://www.youtube.com/watch?v=VN_qGY43A1Y&list=PL23Revp-82LL_XoQEiTT6zsgHHrpjr1D9)  
+* http://www.uiimage.com/OpenGL-ES-1-base-concept/
 
 
 
