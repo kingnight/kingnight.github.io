@@ -5,6 +5,8 @@ category: programming
 tags: iOS,Swift,OpenGLES,Texture
 ---
 
+OpenGLES是 OpenGL 的子集，针对手机、PDA 和游戏主机等嵌入式设备而设计。本系列文章以iOS平台进行纹理渲染为实践目标，在查找了大量资料后进行整理而得，本篇是系列的第二篇。
+
 # 多边形渲染
 
 ## 怎么渲染多变形
