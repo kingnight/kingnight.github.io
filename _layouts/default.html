@@ -16,6 +16,30 @@
       </div>
     </main>
 
+{ % if page.mermaid % }
+
+<script>
+function initMermaid() {
+  var config = {
+    startOnLoad: true,
+    theme: "forest",
+    flowchart:{
+      useMaxWidth: true,
+      htmlLabels: true
+    }
+  };
+  mermaid.initialize(config);
+  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
+
+<script src="/libs/mermaid.min.js"
+  async
+  onload="initMermaid()">
+</script>
+
+{ % endif % }
+
     {%- include footer.html -%}
 
   </body>

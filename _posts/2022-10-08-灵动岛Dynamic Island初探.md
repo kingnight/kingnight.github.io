@@ -3,13 +3,11 @@ title: "灵动岛Dynamic Island初探"
 description: "灵动岛Dynamic Island初探"
 category: programming
 tags: Apple,iOS,Live Activity,Dynamic Island
-toc: true
+mermaid: true
 ---
 
 
 在2022年9月刚刚结束的苹果秋季发布会上，除了常规的手机等硬件设备新品发布，伴随而来一个新的软件功能——灵动岛（Dynamic Island）；灵动岛是将前置镜头和软件通知结合在一起的一个全新功能，2017年发布的iPhone10打电话时候，左上角的那颗胶囊应该就是这个功能的前身，灵动岛上更进一步，不同应用可以展现出不同的样式，本篇文章将从软件开发角度，探索灵动岛的展现形式、功能限制、如何具体实现、适用场景等各方面的问题；帮助还不了解相关信息的开发者快速理解这一新的展现形式，并结合自身产品形态做出创新。
-
-[toc]
 
 # 概览
 
