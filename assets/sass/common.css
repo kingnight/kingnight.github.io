@@ -1,0 +1,45 @@
+.container {
+    width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .container .contents {
+    width: 720px;
+  }
+  
+  .container .table-of-contents {
+    padding: 10px;
+    border-left: 2px solid #efefef;
+    width: 280px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+    margin-bottom: 80px;
+    height: fit-content;
+    margin-left: 30px;
+  }
+  
+  .container .table-of-contents h2 {
+    font-family: fantasy;
+    color: #e32e00;
+  }
+  
+  .container .table-of-contents ul {
+    margin-left: 20px;
+    list-style-type: revert;
+    font-size: 14px;
+    line-height: 24px;
+    color: #005b81;
+  }
+  
+  .container .table-of-contents ul a {
+    color: #005b81;
+  }
+  
+  .container .table-of-contents ul a:hover {
+    color: #e32e00;
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,14 @@
+@media screen and (max-width: 1050px) {
+    .post-content .container {
+      width: 100%;
+    }
+    .post-content .container .contents {
+      width: 100%;
+      float: none;
+      margin: 0 auto;
+    }
+    .post-content .container .table-of-contents {
+      display: none;
+    }
+  }
+  
