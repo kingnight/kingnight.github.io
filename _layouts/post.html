@@ -15,12 +15,9 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author | escape }}</span></span>
       {%- endif -%}</p>
   </header>
-
+  {% include toc.html html=content %}
   <div class="post-content e-content" itemprop="articleBody">
-    {
-      {% include toc.html html=content %}
-      { content }
-    }
+    {{ content }}
   </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4893225566509000"
