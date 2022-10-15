@@ -3,6 +3,7 @@ title: "SwiftUI数据流之StateObject& ObservedObject探讨"
 description: "在WWDC2020，SwiftUI再一次进行了重大更新，特别针对引用类型的数据流状态管理，在原有的@ObservedObject基础上，新增了@StateObject这个新的property wrapper，那么两者之间有什么区别？为什么要新增？本篇将通过大量的代码示例，带你进行详细的测试和分析；然后进一步探索@StateObject的内部实现原理，总结各自的使用场景，最后使得读者能够在项目实践中合理使用。"
 category: programming
 tags: iOS,SwiftUI,StateObject,ObservedObject
+mermaid: true
 ---
 
 

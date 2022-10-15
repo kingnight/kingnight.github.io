@@ -3,6 +3,7 @@ title: "理解GPUImage2中Pipeline核心原理"
 description: "GPUImage是知名的图像处理开源框架，本篇文章以Swift版本GPUImage为分析对象，以GPUImage中Pipeline的处理流程为线索，分析其核心的实现流程设计理念，使得我们不但能够理解其核心原理，也能够从中获得有益的经验，运用到自己的编程设计中。"
 category: programming
 tags: iOS,Swift,OpenGLES,GPUImage,Texture
+mermaid: true
 ---
 
 `GPUImage`是知名的图像处理开源框架，本篇文章以Swift版本的[GPUImage2](https://github.com/BradLarson/GPUImage2)为分析对象，以`GPUImage`中`Pipeline`的处理流程为线索，分析其核心的实现流程设计理念，使得我们不但能够理解其核心原理，也能够从中获得有益的经验，运用到自己的编程设计中。
