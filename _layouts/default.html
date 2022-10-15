@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   <body>
+
     {% include baidu-anaylysis.html %}
+
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
         {{ content }}
@@ -9,6 +11,7 @@
     </main>
 
     {%- include footer.html -%}
+
   </body>
-  
+
 </html>
