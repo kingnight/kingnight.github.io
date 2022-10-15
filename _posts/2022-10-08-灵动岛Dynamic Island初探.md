@@ -20,7 +20,7 @@ mermaid: true
 ### iPhone锁屏（Lock Screen）页面
 
 锁屏页面上半部分可以定制增加小组件，需要iOS16+系统；
-![2efbdc161dfbb0c25af1e68df1e830b2](/assets/images/IMG_0968.PNG)
+![2efbdc161dfbb0c25af1e68df1e830b2](/assets/images/IMG_0968.PNG){:width="400px"}
 
 ### 灵动岛（Dynamic Island）
 
@@ -44,7 +44,7 @@ mermaid: true
 通过简单分析可以看到，展示区域主要分为两个部分：音乐播放左侧显示封面，右侧显示波纹计时器；导航左侧显示即时图标，右侧显示剩余时间导航，下个路口，转弯方向；录音机，左侧显示录音状态，右侧录音时长；
 
 另外，如果App实现了灵动岛，但是在不支持的设备上（即iPhone 14 Pro & iPhone 14 Pro Max机型之外的所有机型），会在Lock Screen会展示一种新的锁屏组件，位置在锁屏页面下半部分，如下图所示：
-![a21b67e5b516857eb657047088812b6e](/assets/images/Simulator Screen Shot - iPhone 14 Pro - 2022-09-17 at 15.06.46.png)
+![a21b67e5b516857eb657047088812b6e](/assets/images/Simulator Screen Shot - iPhone 14 Pro - 2022-09-17 at 15.06.46.png){:width="400px"}
 
 目前苹果已经开放了API给开发者定制属于自己APP的灵动岛功能。
 
