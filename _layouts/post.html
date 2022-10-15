@@ -16,12 +16,11 @@ layout: default
       {%- endif -%}</p>
   </header>
 
-  <div id="table-of-contents">
-    {% toc %}
-  </div>
-
   <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    {
+      {% include toc.html html=content %}
+      { content }
+    }
   </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4893225566509000"
