@@ -88,9 +88,9 @@ The syntax of an #available expression resembles that of an @available attribute
 if | guard | while #available(platform version , platform version ..., *) …
 ```
 
-You can’t combine multiple #available expressions using logical operators like && and ||, but you can use commas, which are equivalent to &&. In practice, this is only useful for conditioning Swift language version and the availability of a single platform (since a check for more than one would be either redundant or impossible).
+> You can’t combine multiple #available expressions using logical operators like && and ||, but you can use commas, which are equivalent to &&. In practice, this is only useful for conditioning Swift language version and the availability of a single platform (since a check for more than one would be either redundant or impossible).
 
-Some of the above content is quoted from https://nshipster.com/available/
+Quoted from https://nshipster.com/available/
 
 # Solve Problem
 Let's discuss the concrete solution to the problem of  App Extension Compiling Error,use Swift API Availability.
