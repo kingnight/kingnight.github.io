@@ -21,7 +21,7 @@
 title: Kingnight Blog
 email: kai.jin.job@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Mobile Developer focus on iOS, interested in Swift,SwiftUI,Objective-C, write notes personally in here 
+  Mobile Developer focus on iOS, interested in Machine Learning,AR/VR, write blog in here 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kingnight.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
