@@ -5,6 +5,8 @@ category: ai
 tags: Cursor,DeepSeek,AI
 ---
 
+作为近期热点的DeepSeek 推理模型，如何使用到 Cursor 中助力编程，2 分钟带你快速配置。
+
 ## 前提
 
 申请好DeepSeek API的key
