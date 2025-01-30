@@ -2,7 +2,7 @@
 title: "灵动岛Dynamic Island初探"
 description: "灵动岛Dynamic Island初探"
 category: programming
-tags: "Apple","iOS","Live Activity","Dynamic Island"
+tags: [Apple, iOS, "Live Activity", "Dynamic Island"]
 mermaid: true
 ---
 

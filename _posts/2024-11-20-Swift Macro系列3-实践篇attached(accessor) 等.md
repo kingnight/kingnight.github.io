@@ -2,7 +2,7 @@
 title: "Swift Macro系列3-实践篇attached(accessor)等"
 description: "本文是Swift Macro系列的第三篇"
 category: macro
-tags: "Swift Macro","attached macro","freestanding macro","SwiftSyntax"
+tags: [Swift Macro, attached macro, freestanding macro, SwiftSyntax]
 ---
 
 本文是《Swift Macro系列》的第三篇，旨在通过详细的步骤和代码示例，指导读者如何设计和实现`@attached(accessor)`，`attached(memberAttribute)`,`@attached(conformance)`和`@attached(member)`宏。

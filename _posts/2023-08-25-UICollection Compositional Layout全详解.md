@@ -2,7 +2,7 @@
 title: "UICollection Compositional Layout全详解"
 description: "UICollection Compositional Layout","diffable datasource"
 category: programming
-tags: "UICollection Compositional Layout","diffable datasource"
+tags: ["UICollection Compositional Layout","diffable datasource"]
 ---
 
 UICollectionView在iOS中是构建复杂布局的强大工具。iOS13中引入的UICollectionView Compositional Layout为创建自定义布局提供了全新的可能性。本文将深入探讨Compositional Layout的工作原理,以及如何利用它创建复杂的分组、嵌套布局和增强视图。无论您是刚开始学习Compositional Layout,还是想掌握它的高级用法,本文都将是您的完美指南。让我们开始这个令人兴奋的布局之旅吧!
