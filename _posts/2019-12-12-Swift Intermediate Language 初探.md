@@ -2,7 +2,7 @@
 title: "Swift Intermediate Language 初探"
 description: "Swift语言是构建在LLVM架构上，标准的三段式设计，并且使用LLVM中间表示(IR)和LLVM不同后端生成机器语言，除此之外，Swift编译器在生成IR之前，还设计了一门新的高级中间语言Swift Intermediate Language，简称SIL，SIL会对Swift进行高级别的语意分析和优化，我们通过解读SIL代码就能去了解Swift背后的一些实现细节，帮助我们理解一些问题"
 category: programming
-tags: swift, ios, compiler
+tags: swift,ios,compiler
 ---
 > 通常，当我们学习一门高级编程语言时，更多专注于它的语法特性，关键字如何使用，是否是面向对象编程，很少关注其背后的编译器是如何处理高级语言，把它转换成低级语言，甚至是机器语言的过程。但是当你遇到一些无法理解的表面现象，没有办法通过文档或者前人经验解读问题的实质，想要尝试探究编程语言背后的实现细节，那么就需要跨越语言本身的了解，向下去专研编译器的实现细节；但是编译器的构成和实现细节往往十分复杂和繁杂，令人生畏，阻碍了人们的学习热情。
 
@@ -284,5 +284,4 @@ bb0(%0 : $*TestClass):
 * https://medium.com/@slavapestov/how-to-talk-to-your-kids-about-sil-type-use-6b45f7595f43
 * https://github.com/apple/swift-evolution/blob/master/proposals/0160-objc-inference.md
 * https://dmtopolog.com/code-optimization-for-swift-and-objective-c/
-
 

@@ -2,7 +2,7 @@
 title: "Swift Macro系列2-实践篇@attached(peer)"
 description: "本文是《Swift Macro系列》的第二篇，旨在通过详细的步骤和代码示例，指导读者如何设计和实现一个@attached(peer)宏。我们将从宏的基本功能分析开始，逐步深入到expansion函数的实现，并探讨如何通过SwiftSyntax库来操作抽象语法树（AST）。"
 category: macro
-tags: Swift Macro,attached macro,freestanding macro,SwiftSyntax
+tags: "Swift Macro","attached macro","freestanding macro","SwiftSyntax"
 ---
 
 本文是《Swift Macro系列》的第二篇，旨在通过详细的步骤和代码示例，指导读者如何设计和实现一个@attached(peer)宏。我们将从宏的基本功能分析开始，逐步深入到expansion函数的实现，并探讨如何通过SwiftSyntax库来操作抽象语法树（AST）。

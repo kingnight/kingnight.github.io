@@ -1,11 +1,6 @@
 ---
 title: "Combine中Schdulers深度探索"
-description: "本文主要探讨如何利用Combine中Schedulers对任务执行进行管理。将会介绍以下几方面内容：
-- 什么是Schedulers？
-- Combine的默认调度机制
-- 切换Schedulers的操作符
-- 通过实例深入理解Schedulers的调度
-- Combine中Schedulers的类型和使用"
+description: "探讨如何利用Combine中Schedulers对任务执行进行管理。将会介绍以下几方面内容：什么是Schedulers？Combine的默认调度机制;切换Schedulers的操作符;通过实例深入理解Schedulers的调度;Combine中Schedulers的类型和使用."
 category: programming
 tags: iOS,Combine,Schedulers
 ---

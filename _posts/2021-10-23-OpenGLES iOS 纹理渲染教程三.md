@@ -1,6 +1,6 @@
 ---
 title: "OpenGLES iOS 纹理渲染教程三"
-description: "OpenGLES是 OpenGL 的子集，针对手机、PDA 和游戏主机等嵌入式设备而设计。本系列文章以iOS平台进行纹理渲染为实践目标，在查找了大量资料后进行整理而得，本篇是系列的第三篇。"
+description: "OpenGLES是OpenGL的子集，针对手机、PDA 和游戏主机等嵌入式设备而设计。本系列文章以iOS平台进行纹理渲染为实践目标，在查找了大量资料后进行整理而得，本篇是系列的第三篇。"
 category: programming
 tags: iOS,Swift,OpenGLES,Texture
 ---
