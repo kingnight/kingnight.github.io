@@ -1,8 +1,10 @@
 ---
 title: "UICollection Compositional Layout全详解"
-description: "UICollection Compositional Layout","diffable datasource"
+description: "UICollection Compositional Layout和diffable datasource详解"
 category: programming
-tags: ["UICollection Compositional Layout","diffable datasource"]
+tags: 
+  - "UICollection Compositional Layout"
+  - "diffable datasource"
 ---
 
 UICollectionView在iOS中是构建复杂布局的强大工具。iOS13中引入的UICollectionView Compositional Layout为创建自定义布局提供了全新的可能性。本文将深入探讨Compositional Layout的工作原理,以及如何利用它创建复杂的分组、嵌套布局和增强视图。无论您是刚开始学习Compositional Layout,还是想掌握它的高级用法,本文都将是您的完美指南。让我们开始这个令人兴奋的布局之旅吧!
@@ -677,7 +679,7 @@ class BackgroundSupplementaryView: UICollectionReusableView {
 
 我们用`CollectionLayoutDecorationItem`来支持它。你只需要用 `element kind`创建它，就可以了。这是用来在section内容背后建立一个视图给你漂亮的视觉分组。要构建它，只需要一行代码。然后将它添加到section中，你只需要指定Item就可以了
 
-如图36所示，我们为背景视图创建了布局，它将为每个部分显示，我们使用布局进行注册`layout.register(BackgroundSupplementaryView.self, forDecorationViewOfKind: “background”)`,注册一个类，用于为集合视图创建装饰视图。这个方法让布局对象有机会注册一个装饰视图，在集合视图中使用。**装饰视图为部分或整个集合视图提供可视化的装饰，但不与集合视图的数据源提供的数据绑定。你不需要显式地创建装饰视图。** 注册一个后，由layout对象决定何时需要一个装饰视图，并从它的`layoutAttributesForElements(in:)`方法返回相应的布局属性。对于指定装饰视图的布局属性，集合视图创建(或重用)一个视图，并根据注册的信息自动显示它。
+如图36所示，我们为背景视图创建了布局，它将为每个部分显示，我们使用布局进行注册`layout.register(BackgroundSupplementaryView.self, forDecorationViewOfKind: "background")`,注册一个类，用于为集合视图创建装饰视图。这个方法让布局对象有机会注册一个装饰视图，在集合视图中使用。**装饰视图为部分或整个集合视图提供可视化的装饰，但不与集合视图的数据源提供的数据绑定。你不需要显式地创建装饰视图。** 注册一个后，由layout对象决定何时需要一个装饰视图，并从它的`layoutAttributesForElements(in:)`方法返回相应的布局属性。对于指定装饰视图的布局属性，集合视图创建(或重用)一个视图，并根据注册的信息自动显示它。
 
 如果您以前使用相同的类型字符串注册了类或nib文件，则您在viewClass参数中指定的类将替换旧条目。如果你想注销装饰视图，可以为viewClass指定nil。
 
