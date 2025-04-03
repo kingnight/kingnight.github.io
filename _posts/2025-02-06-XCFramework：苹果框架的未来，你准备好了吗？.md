@@ -1,5 +1,6 @@
 ---
 title: XCFramework：苹果框架的未来，你准备好了吗？
+category: framework
 tags:
   - ios
   - swift
