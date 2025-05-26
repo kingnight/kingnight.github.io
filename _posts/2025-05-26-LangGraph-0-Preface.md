@@ -12,7 +12,7 @@ tags:
 
 目录
 
-* LangGraph-1-introdiction
+* [LangGraph-1-introdiction](https://kingnight.github.io/aigc/2025/05/26/LangGraph-1-introdiction.html)
 * LangGraph-2-state and memory（comming soon）
 * LangGraph-3-UX and Human-in-the-Loop（comming soon）
 * LangGraph-4-Building Your Assistant（comming soon）
