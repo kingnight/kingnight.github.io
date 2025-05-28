@@ -13,8 +13,8 @@ tags:
 目录
 
 * [LangGraph-1-introdiction](https://kingnight.github.io/aigc/2025/05/26/LangGraph-1-introdiction.html)
-* LangGraph-2-state and memory（comming soon）
-* LangGraph-3-UX and Human-in-the-Loop（comming soon）
+* [LangGraph-2-state and memory](https://kingnight.github.io/aigc/2025/05/27/LangGraph-2-state-and-memory.html)
+* [LangGraph-3-UX and Human-in-the-Loop](https://kingnight.github.io/aigc/2025/05/28/LangGraph-3-UX-and-Human-in-the-Loop.html)
 * LangGraph-4-Building Your Assistant（comming soon）
 * LangGraph-5-Long-Term Memory（comming soon）
 * LangGraph-5-Long-Term Memory-Part2（comming soon）
