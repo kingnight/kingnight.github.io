@@ -15,7 +15,7 @@ tags:
 * [LangGraph-1-introdiction](https://kingnight.github.io/aigc/2025/05/26/LangGraph-1-introdiction.html)
 * [LangGraph-2-state and memory](https://kingnight.github.io/aigc/2025/05/27/LangGraph-2-state-and-memory.html)
 * [LangGraph-3-UX and Human-in-the-Loop](https://kingnight.github.io/aigc/2025/05/28/LangGraph-3-UX-and-Human-in-the-Loop.html)
-* LangGraph-4-Building Your Assistant（comming soon）
-* LangGraph-5-Long-Term Memory（comming soon）
+* [LangGraph-4-Building Your Assistant](https://kingnight.github.io/aigc/2025/05/29/LangGraph-4-Building-Your-Assistant.html)
+* [LangGraph-5-Long-Term Memory](https://kingnight.github.io/aigc/2025/05/30/LangGraph-5-Long-Term-Memory.html)
 * LangGraph-5-Long-Term Memory-Part2（comming soon）
 * LangGraph-6-Deployment（comming soon）

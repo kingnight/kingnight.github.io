@@ -8,9 +8,9 @@ tags:
   - python
 ---
 
-# Short vs Long-term memory
-
 记忆是一种认知功能，它允许人们存储、检索，并利用信息来了解他们的现在和未来。
+
+# Short vs Long-term memory
 
 ## 短期与长期记忆
 
