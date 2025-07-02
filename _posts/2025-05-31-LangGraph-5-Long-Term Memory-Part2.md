@@ -8,6 +8,8 @@ tags:
   - python
 ---
 
+Long Term Memory 第二篇，继续探索
+
 # Chatbot with Collection Schema 
 
 ## Defining a collection schema
