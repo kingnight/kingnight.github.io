@@ -20,17 +20,13 @@ layout: default
     阅读量<span id="busuanzi_value_page_pv"></span>次
   </span>
 
-  <div class="container">
-    <div class="table-of-contents">
-      <h2>Contents</h2>
-      {% include toc.html html=content %}
-    </div>
+  <div class="table-of-contents">
+    <h2>Contents</h2>
+    {% include toc.html html=content %}
+  </div>
 
-    <div class="contents">
-      <div class="post-content e-content" itemprop="articleBody">
-        {{ content }}
-      </div>
-    </div>
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
   </div>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4893225566509000"
