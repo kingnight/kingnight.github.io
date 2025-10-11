@@ -8,10 +8,6 @@ tags:
   - UITableView
   - DiffableDataSource
 ---
-# 
-
-## 引言：告别旧时光，拥抱 `Diffable`
-
 `UITableView` 是 iOS 开发的基石，但多年来，我们一直与一个棘手的问题作斗争：数据源管理。传统的 `dataSource` 代理模式，尤其是 `performBatchUpdates`，常常因为数据状态与 UI 更新不匹配而导致应用崩溃，这成为了许多开发者挥之不去的噩梦。
 
 `UITableViewDiffableDataSource` 的出现，彻底改变了这一局面。它是 Apple 在现代 UI 开发中引入的革命性工具，是 `UITableView` 开发的未来。它通过一个全新的范式，将数据管理的复杂性从开发者手中解放出来。你不再需要手动计算 `IndexPath` 的增、删、改、移，只需向系统提供一个代表 UI 最终状态的“快照”（Snapshot），`DiffableDataSource` 就会自动计算差异，并为你执行平滑、高效且绝不会崩溃的动画更新。
