@@ -746,3 +746,7 @@ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
 
 希望这篇深度解析能为你掌握 `DiffableDataSource` 提供坚实的基础和清晰的指引。现在，去你的项目中实践这些技巧吧！
 
+> 源码：https://github.com/kingnight/DiffableDataSourceKit
+
+
+
