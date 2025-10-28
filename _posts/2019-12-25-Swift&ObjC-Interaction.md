@@ -71,7 +71,7 @@ class ViewController: BaseViewController<ListData> {
 
 答案是：没有输出，`table(_:didSelectRowAt:)`不会被调用执行，那么为什么呢？
 
-显然我们查找文档和Google都不能很容易找到答案，所以想到了利用Swift提供的中间语言SIL（Swift Intermediate Language），如果你不了解SIL，建议首先阅读 [Swift Intermediate Language 初探](wwww)
+显然我们查找文档和Google都不能很容易找到答案，所以想到了利用Swift提供的中间语言SIL（Swift Intermediate Language），如果你不了解SIL，建议首先阅读 [Swift Intermediate Language 初探](https://kingnight.github.io/programming/2019/12/12/Swift-Intermediate-Language-exploration.html)
 
 
 # 生成SIL
