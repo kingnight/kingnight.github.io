@@ -18,10 +18,34 @@
   </body>
 
 <script type="module">
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.0.2/+esm';
-mermaid.initialize({ startOnLoad: false });
-await mermaid.run({
-  querySelector: '.language-mermaid',
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', async () => {
+  // Find all mermaid code blocks
+  const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+
+  if (mermaidBlocks.length > 0) {
+    // Initialize mermaid
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default'
+    });
+
+    // Process each mermaid block
+    mermaidBlocks.forEach((block, index) => {
+      // Create a div to hold the rendered diagram
+      const div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = block.textContent;
+
+      // Replace the pre/code block with the div
+      block.parentElement.replaceWith(div);
+    });
+
+    // Render all diagrams
+    await mermaid.run();
+  }
 });
 </script>
 
