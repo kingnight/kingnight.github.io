@@ -7,6 +7,7 @@ tags:
   - UITableViewDiffableDataSource
   - UITableView
   - DiffableDataSource
+mermaid: true
 ---
 `UITableView` 是 iOS 开发的基石，但多年来，我们一直与一个棘手的问题作斗争：数据源管理。传统的 `dataSource` 代理模式，尤其是 `performBatchUpdates`，常常因为数据状态与 UI 更新不匹配而导致应用崩溃，这成为了许多开发者挥之不去的噩梦。
 
