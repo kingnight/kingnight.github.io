@@ -17,28 +17,12 @@
 
   </body>
 
-{ % if page.mermaid % }
-
-<script>
-function initMermaid() {
-  var config = {
-    startOnLoad: true,
-    theme: "forest",
-    flowchart:{
-      useMaxWidth: true,
-      htmlLabels: true
-    }
-  };
-  mermaid.initialize(config);
-  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-}
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.0.2/+esm';
+mermaid.initialize({ startOnLoad: false });
+await mermaid.run({
+  querySelector: '.language-mermaid',
+});
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.js"
-  async
-  onload="initMermaid()">
-</script>
-
-{ % endif % }
 
 </html>
