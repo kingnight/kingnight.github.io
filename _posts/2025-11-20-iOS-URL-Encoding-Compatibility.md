@@ -89,11 +89,23 @@ extension String {
         return URL(string: finalString)
     }
     
-    /// 核心方法：解析参数并进行“归一化”编码
+		/// 核心方法：解析参数并进行“归一化”编码
     private func encodeQueryValues(_ query: String) -> String {
         // 按 & 分割参数对
         let pairs = query.components(separatedBy: "&")
         var encodedPairs: [String] = []
+        
+        // 【核心修改】：定义一个更严格的字符集
+        // 1. 基于 urlQueryAllowed (包含中文、数字、字母)
+        var strictAllowed = CharacterSet.urlQueryAllowed
+        // 2. 移除所有可能导致歧义的保留字符
+        //    ":"  -> 比如 http://
+        //    "/"  -> 路径分隔符
+        //    "?"  -> query 开始符
+        //    "&"  -> 参数分隔符
+        //    "="  -> 键值分隔符
+        //    "+"  -> 有时被视为空格，最好也编码
+        strictAllowed.remove(charactersIn: ":/?&=+")
         
         for pair in pairs {
             // 按 = 分割 Key 和 Value
@@ -105,14 +117,14 @@ extension String {
                 let rawValue = String(kv[1])
                 
                 // --- 归一化处理 (Reset & Re-encode) ---
-                // 1. 先解码 (Removing Percent Encoding): 
+                // 1. 先解码 (Removing Percent Encoding):
                 //    将 "%E5%BC%A0" 还原为 "张"，将 "张" 保持为 "张"
                 let decodedValue = rawValue.removingPercentEncoding ?? rawValue
                 
                 // 2. 后编码 (Adding Percent Encoding):
                 //    将所有内容统一编码为标准格式
                 //    使用 .urlQueryAllowed 集合，它允许保留字母数字，但会编码中文和特殊符
-                let encodedValue = decodedValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? decodedValue
+                let encodedValue = decodedValue.addingPercentEncoding(withAllowedCharacters: strictAllowed) ?? decodedValue
                 
                 encodedPairs.append("\(key)=\(encodedValue)")
             } else {
@@ -148,7 +160,7 @@ flowchart TD
     class ReturnURL,ReturnNil endNode;
 
     %% --- 分支 1: 没有问号 (纯 Path) ---
-    CheckQuestion -- 否 (No) --> EncodeAll[对整体进行 .urlQueryAllowed 编码]
+    CheckQuestion -- 否 (No) --> EncodeAll[对整体进行 strictAllowed 编码]
     EncodeAll --> InitURL[尝试初始化 URL]
 
     %% --- 分支 2: 有问号 (Path + Query) ---
